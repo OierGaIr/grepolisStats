@@ -1,0 +1,46 @@
+<div class="container mt-4 ">
+    <h1 class="titulo">AÑADIR JUGADOR</h1>
+    <form (ngSubmit)="onSubmit()" class="border" #jugadorForm="ngForm">
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" required id="nombre" class="form-control" [(ngModel)]="nuevoJugador.nombre" name="nombre" minlength="4" #nombre="ngModel" [ngClass]="{'is-invalid': nombre.invalid && nombre.touched}">
+            <div *ngIf="nombre.invalid && nombre.touched" class="text-danger">
+                El nombre debe tener al menos 4 caracteres.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="countCiudades">Ciudades</label>
+            <input type="number" required id="countCiudades" class="form-control" [(ngModel)]="nuevoJugador.countCiudades" name="countCiudades" #countCiudades="ngModel" [ngClass]="{'is-invalid': countCiudades.invalid && countCiudades.touched}">
+            <div *ngIf="countCiudades.invalid && countCiudades.touched" class="text-danger">
+                Debe ser un número válido.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="senado">Senado</label>
+            <input type="text" required id="senado" class="form-control" [(ngModel)]="nuevoJugador.senado" name="senado" minlength="4" #senado="ngModel" [ngClass]="{'is-invalid': senado.invalid && senado.touched}">
+            <div *ngIf="senado.invalid && senado.touched" class="text-danger">
+                El senado debe tener al menos 4 caracteres.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="alianza">Alianza</label>
+            <input type="number" required id="alianza" class="form-control" [(ngModel)]="nuevoJugador.alianza" name="alianza" #alianza="ngModel" [ngClass]="{'is-invalid': alianza.invalid && alianza.touched}">
+            <div *ngIf="alianza.invalid && alianza.touched" class="text-danger">
+                Debe ser un número válido.
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="jugadorForm.invalid">Añadir Jugador</button>
+    </form>
+
+    <div class="d-flex flex-wrap justify-content-between mt-4">
+        <div *ngFor="let jugador of jugadores" class="card card-column">
+            <div class="card-body">
+                <h5 class="card-title">{{ jugador.nombre }}</h5>
+                <p class="card-text">ID: {{ jugador.id }}</p>
+                <p class="card-text">Ciudades: {{ jugador.countCiudades }}</p>
+                <p class="card-text">Senado: {{ jugador.senado }}</p>
+                <p class="card-text">Alianza: {{ jugador.alianza }}</p>
+            </div>
+        </div>
+    </div>
+</div>

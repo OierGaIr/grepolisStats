@@ -1,0 +1,20 @@
+<p>listar-jugadores works!</p>
+
+<div class="container">
+    <div class="d-flex flex-wrap justify-content-between mt-4">
+        <!-- Card 1 -->
+        @for( jugador of jugadores; track jugador.id) {
+        <a href="" class="text-decoration-none">
+            <div class="card card-column">
+                <div class="card-body">
+                    <h5 class="card-title">Nombre: {{jugador.nombre}}</h5>
+                    <p class="card-text">Ciudades: {{jugador.countCiudades}}</p>
+                    <p class="card-text">Senado: {{jugador.senado}}</p>
+                    <p class="card-text">Alianza: {{jugador.alianza}}</p>
+                </div>
+            </div>
+        </a>
+        }
+
+    </div>
+</div>
