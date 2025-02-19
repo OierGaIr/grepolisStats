@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Jugador } from '../../../models/Jugador';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AlianzaServiceService } from '../../services/alianza-service.service';
 import { Alianza } from '../../../models/Alianza';
 
@@ -49,7 +49,7 @@ export class CrearJugadorComponent {
     alianza: 0
   };
 
-  onSubmit() {
+  onSubmit(form: NgForm) {
     console.log(this.jugadores);
     if (this.nuevoJugador.nombre) {
       const newJugador: Jugador = {
@@ -61,7 +61,8 @@ export class CrearJugadorComponent {
       };
       console.log(newJugador)
       this.jugadores.push(newJugador);
-      this.nuevoJugador = { id: 0, nombre: '', countCiudades: 0, senado: '', alianza: 0 };
+      form.reset();
+
       console.log(this.jugadores);
     }
   }
