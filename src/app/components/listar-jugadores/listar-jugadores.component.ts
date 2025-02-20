@@ -13,6 +13,7 @@ export class ListarJugadoresComponent implements OnInit {
   constructor(private jugadorService: JugadorServiceService) { }
 
   jugadores: Jugador[
+  
   ];
 
   ngOnInit(): void {

@@ -5,5 +5,11 @@ export interface Ciudad{
     nombre:string,
     tipoCiudad:string,
     puntos:number,
-    jugador:Jugador
+    jugador:number
+}
+export interface CreateCiudad{
+    nombre:string,
+    tipoCiudad:string,
+    puntos:number,
+    jugador:number
 }

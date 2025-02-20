@@ -1,1 +1,29 @@
 <p>crear-alianza works!</p>
+<div class="container mt-4 ">
+    <h1 class="titulo">AÑADIR ALIANZA</h1>
+    <form (ngSubmit)="onSubmit(alianzaForm)" class="border" #alianzaForm="ngForm">
+        <div class="form-group ">
+            <label for="nombre">Nombre</label>
+            <input placeholder="01 TERMOPILAS" type="text" required id="nombre" class="form-control"
+                [(ngModel)]="nuevaAlianza.nombre" name="nombre" minlength="4" #nombre="ngModel"
+                [ngClass]="{'is-invalid': nombre.invalid && nombre.touched}">
+            <div *ngIf="nombre.invalid && nombre.touched " class="text-danger">
+                El nombre debe tener al menos 4 caracteres.
+            </div>
+        </div>
+        <div class="form-group  mb-3">
+            <label for="senado">Lider</label>
+            <select id="lider" name="lider" required class="form-select" aria-label="Default select example"
+                [ngModel]="nuevaAlianza.lider" #lider="ngModel"
+                [ngClass]="{'is-invalid': lider.invalid && lider.touched}">
+                <option value="" selected> Sin tipo de ciudad</option>
+                @for(jugador of jugadores ;track jugador.id){
+                <option value="{{jugador.id}}">{{jugador.nombre}}</option>
+                }
+            </select>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" [disabled]="alianzaForm.invalid">Añadir Alianza</button>
+    </form>
+
+</div>

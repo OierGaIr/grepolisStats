@@ -1,1 +1,47 @@
 <p>crear-ciudad works!</p>
+<div class="container mt-4 ">
+    <h1 class="titulo">AÑADIR CIUDAD</h1>
+    <form (ngSubmit)="onSubmit(ciudadForm)" class="border" #ciudadForm="ngForm">
+        <div class="form-group ">
+            <label for="nombre">Nombre</label>
+            <input placeholder="01 TERMOPILAS" type="text" required id="nombre" class="form-control"
+                [(ngModel)]="nuevaCiudad.nombre" name="nombre" minlength="4" #nombre="ngModel"
+                [ngClass]="{'is-invalid': nombre.invalid && nombre.touched}">
+            <div *ngIf="nombre.invalid && nombre.touched " class="text-danger">
+                El nombre debe tener al menos 4 caracteres.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="countCiudades">Puntos</label>
+            <input type="number" required id="countCiudades" class="form-control" [ngModel]="nuevaCiudad.puntos"
+                name="puntos" #puntos="ngModel" [ngClass]="{'is-invalid': puntos.invalid && puntos.touched}">
+            <div *ngIf="puntos.invalid && puntos.touched " class="text-danger">
+                Debe ser un número válido.
+            </div>
+        </div>
+        <div class="form-group  mb-3">
+            <label for="senado">Tipo de ciudad</label>
+            <select id="alianza" name="alianza" required class="form-select" aria-label="Default select example"
+                [ngModel]="nuevaCiudad.tipoCiudad" #tipoCiudad="ngModel"
+                [ngClass]="{'is-invalid': tipoCiudad.invalid && tipoCiudad.touched}">
+                <option value="" selected> Sin tipo de ciudad</option>
+                @for(recuento of recuentos ;track recuento.id){
+                <option value="{{recuento.id}}">{{recuento.tipoCiudad}}</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="jugador">Jugador</label>
+            <select id="jugador" name="jugador" required class="form-select" aria-label="Default select example"
+                [ngModel]="nuevaCiudad.jugador" #jugador="ngModel"
+                [ngClass]="{'is-invalid': jugador.invalid && jugador.touched}">
+                @for(jugador of jugadores ;track jugador.id){
+                <option value="{{jugador.id}}">{{jugador.nombre}}</option>
+                }
+
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="ciudadForm.invalid">Añadir Ciudad</button>
+    </form>
+
+</div>
